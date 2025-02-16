@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #prompting user to add subnet
-echo "add your main subnet as the argument. i.e. bash_ping_sweep.sh 192.168.1"
+echo "Scanning $1.1-254"
 
 #check to see if an argument was entered
 if [ "$1" == "" ]
@@ -12,6 +12,6 @@ else
 
 #scans a class c and prints just the ip
 for ip in `seq 1 254` ; do
- ping -c 1 $1.$ip | grep "64 bytes" | cut -d " " -f 4 | tr -d ":"
+ ping -w 1 $1.$ip | grep "64 bytes" | cut -d " " -f 4 | tr -d ":"
  done
 fi
